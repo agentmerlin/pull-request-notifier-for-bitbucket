@@ -89,6 +89,23 @@ public enum PrnfbVariable {
           return on('&').join(parts);
         }
       }),
+  VARIABLE_REGEX_MATCH(
+      new PrnfbVariableResolver() {
+        @Override
+        public String resolve(
+            final PullRequest pullRequest,
+            final PrnfbPullRequestAction pullRequestAction,
+            final ApplicationUser applicationUser,
+            final RepositoryService repositoryService,
+            final ApplicationPropertiesService propertiesService,
+            final PrnfbNotification prnfbNotification,
+            final Map<PrnfbVariable, Supplier<String>> variables,
+            final ClientKeyStore clientKeyStore,
+            final boolean shouldAcceptAnyCertificate,
+            final SecurityService securityService) {
+          return "";
+        }
+      }),
   INJECTION_URL_VALUE(
       new PrnfbVariableResolver() {
         @Override
