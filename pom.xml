@@ -4,7 +4,7 @@
  <modelVersion>4.0.0</modelVersion>
  <groupId>se.bjurr.prnfb</groupId>
  <artifactId>pull-request-notifier-for-bitbucket</artifactId>
- <version>3.26</version>
+ <version>3.26-SNAPSHOT</version>
  <organization>
   <name>Tomas Bjerre</name>
   <url>http://bjurr.se/</url>
@@ -14,8 +14,8 @@
  <packaging>atlassian-plugin</packaging>
  <scm>
   <developerConnection>scm:git:ssh://git@stash.americas.nwea.pvt/~daniel.sprouse/pull-request-notifier-for-bitbucket.git</developerConnection>
-  <url>https://github.com/tomasbjerre/pull-request-notifier-for-bitbucket</url>
-  <tag>pull-request-notifier-for-bitbucket-3.25</tag>
+  <url>https://stash.americas.nwea.pvt/users/daniel.sprouse/repos/pull-request-notifier-for-bitbucket</url>
+  <tag>pull-request-notifier-for-bitbucket-3.26</tag>
  </scm>
  <distributionManagement>
   <repository>
