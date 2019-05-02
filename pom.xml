@@ -4,16 +4,16 @@
  <modelVersion>4.0.0</modelVersion>
  <groupId>se.bjurr.prnfb</groupId>
  <artifactId>pull-request-notifier-for-bitbucket</artifactId>
- <version>3.25</version>
+ <version>3.26</version>
  <organization>
   <name>Tomas Bjerre</name>
   <url>http://bjurr.se/</url>
  </organization>
  <name>pull-request-notifier-for-bitbucket</name>
- <description>This is the Pull Request Notifier for Atlassian Bitbucket. See https://github.com/tomasbjerre/pull-request-notifier-for-bitbucket for documentation and source code.</description>
+ <description>This is a custom NWEA fork of the Pull Request Notifier for Atlassian Bitbucket. See https://github.com/tomasbjerre/pull-request-notifier-for-bitbucket for documentation and source code.</description>
  <packaging>atlassian-plugin</packaging>
  <scm>
-  <developerConnection>scm:git:git@github.com:tomasbjerre/pull-request-notifier-for-bitbucket.git</developerConnection>
+  <developerConnection>scm:git:ssh://git@stash.americas.nwea.pvt/~daniel.sprouse/pull-request-notifier-for-bitbucket.git</developerConnection>
   <url>https://github.com/tomasbjerre/pull-request-notifier-for-bitbucket</url>
   <tag>pull-request-notifier-for-bitbucket-3.25</tag>
  </scm>
