@@ -103,7 +103,39 @@ public enum PrnfbVariable {
             final ClientKeyStore clientKeyStore,
             final boolean shouldAcceptAnyCertificate,
             final SecurityService securityService) {
-          return "";
+          if (prnfbNotification == null || !prnfbNotification.getVariableName().isPresent()) {
+            return "";
+          }
+          final String variableName = prnfbNotification.getVariableName().get();
+          String variableValue = "";
+          for (final PrnfbVariable variable : PrnfbVariable.values()) {
+            if(variable.name().equals(variableName) && !variable.equals(VARIABLE_REGEX_MATCH)) {
+              variableValue = variable.resolve(
+                  pullRequest,
+                  pullRequestAction,
+                  applicationUser,
+                  repositoryService,
+                  propertiesService,
+                  prnfbNotification,
+                  variables,
+                  clientKeyStore,
+                  shouldAcceptAnyCertificate,
+                  securityService);
+            }
+          }
+          if (prnfbNotification.getVariableRegex().isPresent()) {
+            final Matcher m =
+                compile(prnfbNotification.getVariableRegex().get()).matcher(variableValue);
+            if (!m.find()) {
+              return "";
+            }
+            if (m.groupCount() == 0) {
+              return m.group();
+            }
+            return m.group(1);
+          } else {
+            return variableValue;
+          }
         }
       }),
   INJECTION_URL_VALUE(

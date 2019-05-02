@@ -6,14 +6,7 @@ import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 import static se.bjurr.prnfb.listener.PrnfbPullRequestAction.APPROVED;
 import static se.bjurr.prnfb.service.PrnfbRenderer.ENCODE_FOR.NONE;
-import static se.bjurr.prnfb.service.PrnfbVariable.EVERYTHING_URL;
-import static se.bjurr.prnfb.service.PrnfbVariable.INJECTION_URL_VALUE;
-import static se.bjurr.prnfb.service.PrnfbVariable.PULL_REQUEST_AUTHOR_EMAIL;
-import static se.bjurr.prnfb.service.PrnfbVariable.PULL_REQUEST_COMMENT_TEXT;
-import static se.bjurr.prnfb.service.PrnfbVariable.PULL_REQUEST_DESCRIPTION;
-import static se.bjurr.prnfb.service.PrnfbVariable.PULL_REQUEST_FROM_HASH;
-import static se.bjurr.prnfb.service.PrnfbVariable.PULL_REQUEST_MERGE_COMMIT;
-import static se.bjurr.prnfb.service.PrnfbVariable.PULL_REQUEST_TITLE;
+import static se.bjurr.prnfb.service.PrnfbVariable.*;
 import static se.bjurr.prnfb.settings.PrnfbNotificationBuilder.prnfbNotificationBuilder;
 
 import com.atlassian.bitbucket.pull.PullRequest;
@@ -201,6 +194,37 @@ public class PrnfbRendererTest {
             shouldAcceptAnyCertificate);
     assertThat(actual) //
         .isEqualTo("my theResponse string");
+  }
+
+  @Test
+  public void testThatVariableRegexCanBeRendered() throws ValidationException {
+    variables.put(
+        EVERYTHING_URL,
+        Suppliers.ofInstance("projects/AB/repos/example-hello-world/pull-requests/1/overview"));
+    prnfbNotification =
+        prnfbNotificationBuilder(prnfbNotification)
+            .withVariableName("EVERYTHING_URL")
+            .withVariableRegex("(?:hello)-(.+)/pull-requests")
+            .build();
+
+    sut =
+        new PrnfbRenderer(
+            pullRequest,
+            pullRequestAction,
+            applicationUser,
+            repositoryService,
+            propertiesService,
+            prnfbNotification,
+            variables,
+            securityService);
+
+    final String actual =
+        sut.render(
+            "my ${" + VARIABLE_REGEX_MATCH + "} string",
+            encodeFor,
+            clientKeyStore,
+            shouldAcceptAnyCertificate);
+    assertThat(actual).isEqualTo("my world string");
   }
 
   @Test

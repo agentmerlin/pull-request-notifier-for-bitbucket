@@ -503,12 +503,12 @@
    <fieldset class="group">
     <div class="field-group">
      <label>Variable Name </label>
-     <input class="text long-field" type="text" name="regexVariableName">
+     <input class="text long-field" type="text" name="variableName">
      <div class="description"></div>
     </div>
     <div class="field-group">
      <label>Variable Regex </label>
-     <input class="text long-field" type="text" name="regexVariableValue">
+     <input class="text long-field" type="text" name="variableRegex">
      <div class="description">Regular expression to match against the variable value.</div>
     </div>
    </fieldset>
