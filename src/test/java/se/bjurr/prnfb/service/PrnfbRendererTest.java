@@ -198,13 +198,12 @@ public class PrnfbRendererTest {
 
   @Test
   public void testThatVariableRegexCanBeRendered() throws ValidationException {
-    variables.put(
-        EVERYTHING_URL,
-        Suppliers.ofInstance("projects/AB/repos/example-hello-world/pull-requests/1/overview"));
+    when(pullRequest.getFromRef().getDisplayId()) //
+        .thenReturn("feature/hello-world");
     prnfbNotification =
         prnfbNotificationBuilder(prnfbNotification)
-            .withVariableName("EVERYTHING_URL")
-            .withVariableRegex("(?:hello)-(.+)/pull-requests")
+            .withVariableName("PULL_REQUEST_FROM_BRANCH")
+            .withVariableRegex("(?:hello)-(.+)")
             .build();
 
     sut =

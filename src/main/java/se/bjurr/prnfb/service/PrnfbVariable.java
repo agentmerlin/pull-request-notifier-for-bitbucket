@@ -108,19 +108,20 @@ public enum PrnfbVariable {
           }
           final String variableName = prnfbNotification.getVariableName().get();
           String variableValue = "";
-          for (final PrnfbVariable variable : PrnfbVariable.values()) {
-            if(variable.name().equals(variableName) && !variable.equals(VARIABLE_REGEX_MATCH)) {
-              variableValue = variable.resolve(
-                  pullRequest,
-                  pullRequestAction,
-                  applicationUser,
-                  repositoryService,
-                  propertiesService,
-                  prnfbNotification,
-                  variables,
-                  clientKeyStore,
-                  shouldAcceptAnyCertificate,
-                  securityService);
+          for (final PrnfbVariable v : PrnfbVariable.values()) {
+            if (v.name().equals(variableName) && v != VARIABLE_REGEX_MATCH) {
+              variableValue =
+                  v.resolve(
+                      pullRequest,
+                      pullRequestAction,
+                      applicationUser,
+                      repositoryService,
+                      propertiesService,
+                      prnfbNotification,
+                      variables,
+                      clientKeyStore,
+                      shouldAcceptAnyCertificate,
+                      securityService);
             }
           }
           if (prnfbNotification.getVariableRegex().isPresent()) {
