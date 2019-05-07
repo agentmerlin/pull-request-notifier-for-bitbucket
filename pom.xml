@@ -13,8 +13,8 @@
  <description>This is a custom NWEA fork of the Pull Request Notifier for Atlassian Bitbucket. See https://github.com/tomasbjerre/pull-request-notifier-for-bitbucket for documentation and source code.</description>
  <packaging>atlassian-plugin</packaging>
  <scm>
-  <developerConnection>scm:git:ssh://git@stash.americas.nwea.pvt/~daniel.sprouse/pull-request-notifier-for-bitbucket.git</developerConnection>
-  <url>https://stash.americas.nwea.pvt/users/daniel.sprouse/repos/pull-request-notifier-for-bitbucket</url>
+  <developerConnection>scm:git:git@github.com:tomasbjerre/pull-request-notifier-for-bitbucket.git</developerConnection>
+  <url>https://github.com/tomasbjerre/pull-request-notifier-for-bitbucket</url>
   <tag>pull-request-notifier-for-bitbucket-3.26</tag>
  </scm>
  <distributionManagement>
